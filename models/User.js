@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    total_value: {
+        type: Number,
+        default: 0
+    },
     hashed_password: {
         type: String,
         required: true
