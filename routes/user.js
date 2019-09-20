@@ -9,6 +9,8 @@ const {
 
 const {
     userById,
+    read,
+    update
 } = require('../controllers/user')
 
 
@@ -17,6 +19,9 @@ router.get('/secret/:userId', requireSignIn, isAuth, isAdmin, (req, res) => {
         user: req.profile
     })
 })
+router.get('/user/:userId', requireSignIn, isAuth, isAdmin, read)
+router.put('/user/:userId', requireSignIn, isAuth, isAdmin, update)
 
 router.param('userId', userById)
+
 module.exports = router
