@@ -10,6 +10,7 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const experessValidator = require('express-validator')
+const cors = require('cors')
 
 
 
@@ -23,7 +24,7 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cookieParser())
 app.use(experessValidator())
-
+app.use(cors())
 
 app.use(authRoutes)
 app.use(userRoutes)
