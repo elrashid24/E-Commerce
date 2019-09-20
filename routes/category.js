@@ -24,6 +24,7 @@ router.delete('/category/:categoryId/:userId', requireSignIn, isAuth, isAdmin, r
 router.get('/category/:categoryId', read)
 router.get('/categories', list)
 
+
 router.param('userId', userById)
 router.param('categoryId', categoryById)
 
