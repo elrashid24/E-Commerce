@@ -8,10 +8,9 @@ exports.signup = (req, res) => {
     console.log(req.body)
     const user = new User(req.body)
     user.save((err, user) => {
-        console.log('you made it to the signup controller')
         if (err) {
             return res.status(400).json({
-                err: 'errorHandler(err)'
+                err: errorHandler(err)
             })
         } else {
             user.salt = undefined

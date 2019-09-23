@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../core/Layout";
-// const postHeaders = {
-//   Accept: "application/json",
-//   "Content Type": "application/json"
-// };
+import { Link } from "react-router-dom";
 const Signup = () => {
   const [values, setValues] = useState({
     name: "",
@@ -13,30 +10,59 @@ const Signup = () => {
     success: false
   });
 
-  const { name, email, password } = values;
+  const { name, email, password, success, error } = values;
+
   const handleChange = field => event => {
     setValues({ ...values, error: false, [field]: event.target.value });
   };
 
   const signUp = user => {
-    fetch(`http://localhost:8000/signup`, {
+    return fetch(`http://localhost:8000/signup`, {
       method: `POST`,
       headers: {
-        "Access-Control-Allow-Origin": "*",
         Accept: "application/json",
         "Content-Type": "application/json"
       },
       body: JSON.stringify(user)
     })
-      .then(res => console.log(res))
+      .then(response => {
+        setValues({ ...values, success: true, error: false });
+        return response.json();
+      })
       .catch(err => console.log(err));
-
-    // console.log(name, email, password);
   };
 
   const handleSignup = e => {
     e.preventDefault();
-    signUp({ name, email, password });
+    signUp({ name, email, password }).then(res => {
+      if (res.error) {
+        setValues({ ...values, error: res.error, success: false });
+      }
+      console.log(values);
+    });
+  };
+
+  const showError = () => {
+    return (
+      <div
+        className="alert alert-danger"
+        style={{ display: error ? "" : "none" }}
+      >
+        {error}
+      </div>
+    );
+  };
+
+  const showSuccess = () => {
+    return (
+      <div
+        className="alert alert-info"
+        style={{ display: success ? "" : "none" }}
+      >
+        Your account has been successfully created!{" "}
+        <Link to="/signin">Please Sign in </Link>to start using V-Commerce.
+      </div>
+    );
   };
 
   const signUpForm = () => {
@@ -76,6 +102,7 @@ const Signup = () => {
   return (
     <div>
       <Layout title="Signup Page" description="this is the sign up page" />
+      {showError()},{showSuccess()}
       {signUpForm()}
     </div>
   );

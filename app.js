@@ -11,9 +11,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const experessValidator = require('express-validator')
 const cors = require('cors')
-app.use(cors({
-    origin: true
-}))
+app.use(cors())
 
 
 
