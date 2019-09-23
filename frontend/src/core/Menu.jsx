@@ -3,7 +3,6 @@ import { Link, withRouter } from "react-router-dom";
 
 const Menu = ({ history }) => {
   const activeLink = (history, path) => {
-    console.log(history);
     if (history.location.pathname === path) {
       return { color: "red" };
     }
