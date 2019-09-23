@@ -32,7 +32,7 @@ exports.signin = (req, res) => {
     }, (err, user) => {
         if (err || !user) {
             return res.status(400).json({
-                err: 'No user found with this email.'
+                error: 'No user found with this email.'
             })
         }
 
