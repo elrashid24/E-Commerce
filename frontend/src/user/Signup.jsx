@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Layout from "../core/Layout";
 import { Link } from "react-router-dom";
+import { signUp } from "../auth_api/index";
 const Signup = () => {
   const [values, setValues] = useState({
     name: "",
@@ -16,27 +17,17 @@ const Signup = () => {
     setValues({ ...values, error: false, [field]: event.target.value });
   };
 
-  const signUp = user => {
-    return fetch(`http://localhost:8000/signup`, {
-      method: `POST`,
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(user)
-    })
-      .then(response => {
-        setValues({ ...values, success: true, error: false });
-        return response.json();
-      })
-      .catch(err => console.log(err));
-  };
-
   const handleSignup = e => {
     e.preventDefault();
     signUp({ name, email, password }).then(res => {
       if (res.error) {
         setValues({ ...values, error: res.error, success: false });
+      } else {
+        setValues({
+          ...values,
+          success: true,
+          error: false
+        });
       }
       console.log(values);
     });
