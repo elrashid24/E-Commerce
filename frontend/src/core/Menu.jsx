@@ -1,7 +1,8 @@
 import React from "react";
 import { Link, withRouter, Redirect } from "react-router-dom";
 import { signOut, isAuthenticated } from "../auth_api/index";
-
+import Dashboard from "../user/UserDashboard";
+import PrivateRotues from "../auth_api/ProtectedRoutes";
 const Menu = ({ history }) => {
   const activeLink = (history, path) => {
     if (history.location.pathname === path) {
@@ -16,6 +17,15 @@ const Menu = ({ history }) => {
           <li className="nav-item">
             <Link className="nav-link" to="/" style={activeLink(history, "/")}>
               Home
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              className="nav-link"
+              to="/dashboard"
+              style={activeLink(history, "/dashboard")}
+            >
+              Dashboard
             </Link>
           </li>
 
