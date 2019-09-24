@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth_api/index";
 import { Link } from "react-router-dom";
+import { createCategory } from "./admin_api_util";
 
 const AddCategory = () => {
   const [name, setName] = useState("");
@@ -9,7 +10,7 @@ const AddCategory = () => {
   const [succes, setSuccess] = useState(false);
 
   const { user, token } = isAuthenticated();
-
+  console.log(user);
   const handleOnChange = e => {
     setError("");
     setName(e.target.value);
@@ -19,6 +20,30 @@ const AddCategory = () => {
     e.preventDefault();
     setError("");
     setSuccess(false);
+    createCategory(user._id, token, { name }).then(newCategory => {
+      //   console.log(newCategory.error.message);
+      if (newCategory.error) {
+        setError(newCategory.error);
+      } else {
+        setError("");
+        setSuccess(true);
+      }
+    });
+  };
+
+  const showSuccess = () => {
+    if (succes) {
+      return (
+        <h3 className="text-success">
+          Congrats! A {name} category has been created.
+        </h3>
+      );
+    }
+  };
+  const showError = () => {
+    if (error) {
+      return <h3 className="text-danger">Category names should be unique.</h3>;
+    }
   };
 
   const newCategoryForm = () => (
@@ -29,12 +54,11 @@ const AddCategory = () => {
           type="text"
           onChange={handleOnChange}
           value={name}
-          className="form-control mb-5"
+          className="form-control "
           autoFocus
-          
         />
-        <button className="btn btn-outline-primary">Create Category</button>
       </div>
+      <button className="btn btn-outline-primary">Create Category</button>
     </form>
   );
 
@@ -45,6 +69,8 @@ const AddCategory = () => {
     >
       <div className="row">
         <div className="col-md-8 offset-md-2">{newCategoryForm()}</div>
+        <div>{showSuccess()}</div>
+        <div>{showError()}</div>
       </div>
     </Layout>
   );

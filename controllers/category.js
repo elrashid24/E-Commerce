@@ -8,7 +8,7 @@ exports.create = (req, res) => {
     category.save((err, data) => {
         if (err) {
             return res.status(400).json({
-                error: err
+                err: 'Category Could not be created. Categories must be unique and at least character in length'
             })
         }
         res.json({
