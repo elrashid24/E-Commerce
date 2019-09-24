@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Layout from "../core/Layout";
 import { Redirect } from "react-router-dom";
 import { signIn } from "../auth_api/index";
-import { authenticate } from "../auth_api/index";
+import { authenticate, isAuthenticated } from "../auth_api/index";
 const Signin = () => {
   const [values, setValues] = useState({
     email: "demo@gmail.com",
@@ -13,7 +13,7 @@ const Signin = () => {
   });
 
   const { email, password, loading, error, redirectToRefferer } = values;
-
+  const { user } = isAuthenticated();
   const handleChange = field => event => {
     setValues({ ...values, error: false, [field]: event.target.value });
   };
@@ -58,7 +58,11 @@ const Signin = () => {
 
   const redirectUser = () => {
     if (redirectToRefferer) {
-      return <Redirect to="/" />;
+      if (user && user.role === 1) {
+        return <Redirect to="/admin/dashboard" />;
+      } else {
+        return <Redirect to="/user/dashboard" />;
+      }
     }
   };
 

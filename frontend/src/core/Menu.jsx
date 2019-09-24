@@ -23,7 +23,7 @@ const Menu = ({ history }) => {
             <Link
               className="nav-link"
               to="/dashboard"
-              style={activeLink(history, "/dashboard")}
+              style={activeLink(history, "/user/dashboard")}
             >
               Dashboard
             </Link>
