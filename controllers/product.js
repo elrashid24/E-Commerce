@@ -11,6 +11,7 @@ exports.create = (req, res) => {
   let form = new formidable.IncomingForm();
   form.keepExtensions = true;
   form.parse(req, (err, fields, files) => {
+    console.log(err)
     if (err) {
       return res.status(400).json({
         error: "Image could not be uploaded"

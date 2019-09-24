@@ -9,6 +9,7 @@ import Menu from "./core/Menu";
 import UserDashboard from "./user/UserDashboard";
 import AdminDashboard from "./user/AdminDashboard";
 import AddCategory from "./admin/AddCategory";
+import AddProduct from "./admin/AddProduct";
 
 //routes
 import PrivateRoutes from "./auth_api/ProtectedRoutes";
@@ -21,9 +22,12 @@ const Routes = () => {
       <Switch>
         <Route path="/" exact component={Home}></Route>
         <Route path="/signin" exact component={Signin}></Route>
-        <AdminRoutes path="/create/category" exact component={AddCategory} />
+
         <PrivateRoutes path="/user/dashboard" exact component={UserDashboard} />
+
         <AdminRoutes path="/admin/dashboard" exact component={AdminDashboard} />
+        <AdminRoutes path="/create/category" exact component={AddCategory} />
+        <AdminRoutes path="/create/product" exact component={AddProduct} />
       </Switch>
     </BrowserRouter>
   );

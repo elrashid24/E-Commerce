@@ -10,7 +10,7 @@ const AddCategory = () => {
   const [succes, setSuccess] = useState(false);
 
   const { user, token } = isAuthenticated();
-  console.log(user);
+  // console.log(user);
   const handleOnChange = e => {
     setError("");
     setName(e.target.value);

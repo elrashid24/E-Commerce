@@ -13,3 +13,19 @@
           })
           .catch(err => console.log(err));
   };
+  export const createProduct = (userId, token, product) => {
+      console.log(product)
+      return fetch(`http://localhost:8000/product/create/${userId}`, {
+              method: `POST`,
+              headers: {
+                  Accept: "application/json",
+                  Authorization: `Bearer ${token}`
+
+              },
+              body: product
+          })
+          .then(response => {
+              return response.json();
+          })
+          .catch(err => console.log(err));
+  };
