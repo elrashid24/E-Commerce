@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../core/Layout";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import { signIn } from "../auth_api/index";
 import { authenticate, isAuthenticated } from "../auth_api/index";
 const Signin = () => {
@@ -103,4 +103,4 @@ const Signin = () => {
     </div>
   );
 };
-export default Signin;
+export default withRouter(Signin);
