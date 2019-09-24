@@ -245,9 +245,11 @@ exports.listBySearch = (req, res) => {
 };
 
 exports.photo = (req, res, next) => {
-  if (req.body.photo.data) {
+  if (req.body) {
     res.set('Content-Type', req.product.photo.contentType)
     return res.send(req.product.photo.data)
+  } else {
+    console.log('DAFQ')
   }
   next()
 }

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import { getProducts } from "./core_util";
-import ProductItem from "./product_item";
+import ProductItem from "./ProductItem";
+
 const Home = () => {
   const [productsBySold, setProductsBySold] = useState([]);
   const [productsByArrival, setProductsByArrival] = useState([]);
