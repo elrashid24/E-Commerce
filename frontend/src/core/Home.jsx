@@ -31,12 +31,20 @@ const Home = () => {
     loadProductsBySold();
   }, []);
   return (
-    <Layout title="My Project" description="Home">
+    <Layout title="My Project" description="Home" className="container-fluid">
+      <h2 className="mb-4">Latest Products</h2>
+      <div className="row">
+        {productsByArrival.map((product, idx) => {
+          return <ProductItem key={idx} product={product} />;
+        })}
+      </div>
+      <br />
       <h2 className="mb-4">Popular Products</h2>
-
-      {productsBySold.map((product, idx) => {
-        return <ProductItem key={idx} product={product} />;
-      })}
+      <div className="row">
+        {productsBySold.map((product, idx) => {
+          return <ProductItem key={idx} product={product} />;
+        })}
+      </div>
     </Layout>
   );
 };
