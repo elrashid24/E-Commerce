@@ -15,10 +15,11 @@ app.use(cors())
 
 
 
-mongoose.connect(process.env.DATABASE, {
+mongoose.connect(process.env.DATABASE
+    , {
     useNewUrlParser: true,
     useCreateIndex: true
-}).then(() => console.log("Connected to MonogoDB"))
+}).then(() => console.log("Connected to MonogoDB"), err => console.log(err))
 
 
 app.use(morgan('dev'))
