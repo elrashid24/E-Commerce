@@ -11,7 +11,7 @@ const ProductItem = ({ product }) => {
         <div className="card-header "> {product.name}</div>
         <div className="card-body">
           <ProductPhoto item={product} url="product" key={product._id} />
-          <p>{product.description}</p>
+          <p>{product.description.slice(0,50)}...</p>
           <p>${product.price}</p>
           <Link to="/">
             <button

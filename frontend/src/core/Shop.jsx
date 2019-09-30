@@ -22,6 +22,7 @@ const Shop = () => {
         console.log(categories.error);
         setError(categories.error);
       } else {
+        console.log("HERE", categories);
         setCategories(categories);
       }
     });
@@ -35,7 +36,7 @@ const Shop = () => {
         setError(filteredProducts.error);
       } else {
         console.log("FILTERED PRODUCTS", filteredProducts);
-        setFilteredResults(filteredProducts);
+        setFilteredResults(filteredProducts.data);
       }
     });
   };
@@ -95,7 +96,12 @@ const Shop = () => {
           </div>
         </div>
         <div className="col-8">right</div>
-        {JSON.stringify(myFilters)}
+        <h2 className="mb-4">Here's what we have</h2>
+        <div className="row">
+          {filteredResults.map((product, index) => {
+            return <ProductItem key={index} product={product} />;
+          })}
+        </div>
       </div>
     </Layout>
   );
