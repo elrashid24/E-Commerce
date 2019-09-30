@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "./Layout";
 import ProductItem from "./ProductItem";
-import { getCategories } from "./core_util";
+import { getCategories, getFilteredProducts } from "./core_util";
 import CheckBox from "./CheckBox";
 import { prices } from "./fixedPrices";
 import PriceButtons from "./PriceButtons";
@@ -9,16 +9,33 @@ import PriceButtons from "./PriceButtons";
 const Shop = () => {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(false);
+  const [limit, setLimit] = useState(50);
+  const [skip, setSkip] = useState(false);
   const [myFilters, setMyFilters] = useState({
     filters: { category: [], price: [] }
   });
+  const [filteredResults, setFilteredResults] = useState([]);
 
   const loadCategories = () => {
     getCategories().then(categories => {
       if (categories.error) {
+        console.log(categories.error);
         setError(categories.error);
       } else {
         setCategories(categories);
+      }
+    });
+  };
+
+  const loadFilteredResults = newFilters => {
+    console.log("FILTERS GOING TO THE BACKEND", newFilters);
+    getFilteredProducts(skip, limit, newFilters).then(filteredProducts => {
+      if (filteredProducts.error) {
+        console.log("SOME WENTT WRONG");
+        setError(filteredProducts.error);
+      } else {
+        console.log("FILTERED PRODUCTS", filteredProducts);
+        setFilteredResults(filteredProducts);
       }
     });
   };
@@ -28,15 +45,15 @@ const Shop = () => {
   }, []);
 
   const handleFilters = (filters, filterBy) => {
-    // console.log("SHOP", filters, filterBy);
     const newFilters = { ...myFilters };
     newFilters.filters[filterBy] = filters;
-    setMyFilters(newFilters);
 
     if (filterBy === "price") {
       let priceValues = handlePrice(filters);
       newFilters.filters[filterBy] = priceValues;
     }
+    loadFilteredResults(myFilters);
+    setMyFilters(newFilters);
   };
 
   const handlePrice = value => {

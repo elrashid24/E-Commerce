@@ -146,7 +146,7 @@ exports.update = (req, res) => {
 exports.list = (req, res) => {
   let order = req.query.order ? req.query.order : "asc";
   let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
-  let limit = req.query.limit ? parseInt(req.query.limit) : 6;
+  let limit = req.query.limit ? parseInt(req.query.limit) : 62;
 
   Product.find()
     .select("-photo")
@@ -200,29 +200,34 @@ exports.listCategories = (req, res) => {
   })
 }
 
+
+
 exports.listBySearch = (req, res) => {
   let order = req.body.order ? req.body.order : "desc";
   let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
-  let limit = req.body.limit ? parseInt(req.body.limit) : 50;
+  let limit = req.body.limit ? parseInt(req.body.limit) : 100;
   let skip = parseInt(req.body.skip);
   let findArgs = {};
 
+  const filterObject = req.body.filters.filters
 
+  console.log(filterObject)
 
-  for (let key in req.body.filters) {
-    if (req.body.filters[key].length > 0) {
+  for (let key in filterObject) {
+    if (filterObject[key].length > 0) {
       if (key === "price") {
-
+        // gte -  greater than price [0-10]
+        // lte - less than
         findArgs[key] = {
-          $gte: req.body.filters[key][0],
-          $lte: req.body.filters[key][1]
+          $gte: filterObject[key][0],
+          $lte: filterObject[key][1]
         };
       } else {
-        findArgs[key] = req.body.filters[key];
+        findArgs[key] = filterObject[key];
       }
     }
   }
-
+  console.log('FIND-ARGS', findArgs)
   Product.find(findArgs)
     .select("-photo")
     .populate("category")
