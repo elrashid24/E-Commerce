@@ -35,16 +35,13 @@ const Search = () => {
     if (search) {
       console.log(search);
       return list({ search: search || undefined, category: category }).then(
-        // response => {
-        //   if (response.error) {
-        //     console.log("error in search", response.error);
-        //   } else {
-        //     console.log("coming from the backend", response);
-        //     setData({ ...data, results: response, searched: true });
-        //   }
-        // }
-        res => {
-          console.log("RES", res);
+        response => {
+          if (response.error) {
+            console.log("error in search", response.error);
+          } else {
+            console.log("coming from the backend", response);
+            setData({ ...data, results: response, searched: true });
+          }
         }
       );
     }
@@ -85,6 +82,17 @@ const Search = () => {
   useEffect(() => {
     loadCategories();
   }, []);
-  return <div>{searchForm()}</div>;
+
+  return (
+    <div className="row">
+      <div className="container mb-3">{searchForm()}</div>
+      <div className="container-fluid mb-3">
+        {results.map((product, i) => {
+          return <ProductItem key={i} product={product} />;
+        })}
+      </div>
+    </div>
+  );
 };
+
 export default Search;
