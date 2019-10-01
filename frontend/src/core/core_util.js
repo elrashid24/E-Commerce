@@ -44,3 +44,12 @@ export const list = params => {
         return result.json()
     }).catch(error => console.log(error))
 }
+
+export const getSingleProduct = productId => {
+    return fetch(`http://localhost:8000/product/${productId}`, {
+        method: `GET`,
+
+    }).then(product => {
+        return product.json()
+    }).catch(error => console.log(error))
+}

@@ -118,14 +118,19 @@ const Shop = () => {
             />
           </div>
         </div>
-        <div className="col-8">right</div>
-        <div className="row">
-          {filteredResults.map((product, index) => {
-            return <ProductItem key={index} product={product} />;
-          })}
+        <div className="col-8">
+          <div className="row">
+            {filteredResults.map((product, idx) => {
+              return (
+                <div className="col-4 mb-3" key={idx}>
+                  <ProductItem product={product} />;
+                </div>
+              );
+            })}
+            <br />
+            {loadMoreButton()}
+          </div>
         </div>
-        <br />
-        {loadMoreButton()}
       </div>
     </Layout>
   );

@@ -38,14 +38,22 @@ const Home = () => {
       <h2 className="mb-4">Latest Products</h2>
       <div className="row">
         {productsByArrival.map((product, idx) => {
-          return <ProductItem key={idx} product={product} />;
+          return (
+            <div className="col-4 mb-3" key={idx}>
+              <ProductItem product={product} />;
+            </div>
+          );
         })}
       </div>
       <br />
       <h2 className="mb-4">Popular Products</h2>
       <div className="row">
         {productsBySold.map((product, idx) => {
-          return <ProductItem key={idx} product={product} />;
+          return (
+            <div className="col-4 mb-3" key={idx}>
+              <ProductItem product={product} />;
+            </div>
+          );
         })}
       </div>
     </Layout>

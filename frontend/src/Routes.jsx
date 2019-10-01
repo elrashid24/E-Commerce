@@ -11,7 +11,7 @@ import UserDashboard from "./user/UserDashboard";
 import AdminDashboard from "./user/AdminDashboard";
 import AddCategory from "./admin/AddCategory";
 import AddProduct from "./admin/AddProduct";
-
+import SingleProduct from "./core/SingleProduct";
 //routes
 import PrivateRoutes from "./auth_api/ProtectedRoutes";
 import AdminRoutes from "./auth_api/AdminRoutes";
@@ -24,6 +24,11 @@ const Routes = () => {
         <Route path="/" exact component={Home}></Route>
         <Route path="/shop" exact component={Shop}></Route>
         <Route path="/signin" exact component={Signin}></Route>
+        <Route
+          path="/product/:productId"
+          exact
+          component={SingleProduct}
+        ></Route>
 
         <PrivateRoutes path="/user/dashboard" exact component={UserDashboard} />
 
