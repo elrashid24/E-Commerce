@@ -33,18 +33,27 @@ const Search = () => {
 
   const searchForProducts = () => {
     if (search) {
-      console.log(search);
       return list({ search: search || undefined, category: category }).then(
         response => {
           if (response.error) {
             console.log("error in search", response.error);
           } else {
-            console.log("coming from the backend", response);
             setData({ ...data, results: response, searched: true });
           }
         }
       );
     }
+  };
+
+  const searchedMessage = (searched, results) => {
+    if (searched && results.length > 0) {
+      console.log(results, searched);
+      return `We have ${results.length} items that match your search`;
+    }
+    if (searched && results.length < 1) {
+      return `We have no items that match your search `;
+    }
+    return "";
   };
 
   const searchForm = () => {
@@ -85,6 +94,7 @@ const Search = () => {
 
   return (
     <div className="row">
+      <h2>{searchedMessage(searched, results)}</h2>
       <div className="container mb-3">{searchForm()}</div>
       <div className="container-fluid mb-3">
         {results.map((product, i) => {

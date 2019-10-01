@@ -260,8 +260,7 @@ exports.photo = (req, res, next) => {
 }
 
 exports.listSearch = (req, res) => {
-  console.log('MOTHERFUCKER',
-    req.query)
+
   const query = {}
 
   if (req.query.search) {
@@ -275,7 +274,7 @@ exports.listSearch = (req, res) => {
     query.category =
       req.query.category
   }
-  console.log('QUEEROOO', query)
+
 
   Product.find(query, (err, products) => {
     if (err) {

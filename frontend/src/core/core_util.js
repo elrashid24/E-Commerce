@@ -38,11 +38,9 @@ export const getFilteredProducts = (skip, limit, filters = {}) => {
 
 export const list = params => {
     const searchParams = queryString.stringify(params)
-    console.log('SEARCH PARAMS', searchParams)
     return fetch(`http://localhost:8000/products/search?${searchParams}`, {
         method: 'GET'
     }).then(result => {
-        console.log('THIS WHAT THE BACKEND FOUND', result)
         return result.json()
     }).catch(error => console.log(error))
 }
