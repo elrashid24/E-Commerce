@@ -5,7 +5,7 @@ import { signOut, isAuthenticated } from "../auth_api/index";
 const Menu = ({ history }) => {
   const activeLink = (history, path) => {
     if (history.location.pathname === path) {
-      return { color: "red" };
+      return { color: "white" };
     }
     return { color: "white" };
   };

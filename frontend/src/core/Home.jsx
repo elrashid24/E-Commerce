@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import { getProducts } from "./core_util";
 import ProductItem from "./ProductItem";
+import Search from "./Search";
 
 const Home = () => {
   const [productsBySold, setProductsBySold] = useState([]);
@@ -18,7 +19,7 @@ const Home = () => {
     });
   };
   const loadProductsByArrival = () => {
-    getProducts(`createdAt`).then(productsSortedByArrival => {
+    return getProducts(`createdAt`).then(productsSortedByArrival => {
       if (productsSortedByArrival.error) {
         setError(productsSortedByArrival.error);
       } else {
@@ -33,6 +34,7 @@ const Home = () => {
   }, []);
   return (
     <Layout title="My Project" description="Home" className="container-fluid">
+      <Search />
       <h2 className="mb-4">Latest Products</h2>
       <div className="row">
         {productsByArrival.map((product, idx) => {

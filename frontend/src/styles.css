@@ -3,7 +3,7 @@
     height: 30vh;
     color: #fff;
     /* background: linear-gradient(to left, #141e30, #243b55); */
-   background: linear-gradient(to right, #232526, #414345);
+    background: linear-gradient(to top, #eacda3, #d6ae7b);
     background-size: 400% 400%;
     -webkit-animation: Gradient 15s ease infinite;
     -moz-animation: Gradient 15s ease infinite;
@@ -16,20 +16,37 @@
 
 .card-header {
     /* background: linear-gradient(to right, #141e30, #243b55); */
-    background: #8E0E00;
+    background: linear-gradient(to left, #8e0e00, #1f1c18);
     font-size: 18px;
-
+    width: 100%;
+    background: #8e0e00
 }
 
 .card-footer {
     /* background: linear-gradient(to left, #141e30, #243b55); */
-    background: #8E0E00;
+    background: linear-gradient(to right, #8e0e00, #1f1c18);
 }
 
 .card-body {
     color: #141e30;
     font-size: 16px;
+    max-width: 500px;
+    max-height: 100%
 }
+
+.card {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    /* height: 500px; */
+    max-width: 600px;
+    max-height: 900px;
+
+}
+
+
+
+
 
 
 @-webkit-keyframes Gradient {
@@ -72,10 +89,4 @@
     100% {
         background-position: 0% 50%;
     }
-}
-
-.app {
-    font: fantasy;
-    /* background: black; */
-
 }

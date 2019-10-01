@@ -15,6 +15,7 @@ const Shop = () => {
     filters: { category: [], price: [] }
   });
   const [filteredResults, setFilteredResults] = useState([]);
+  const [size, setSize] = useState(0);
 
   const loadCategories = () => {
     getCategories().then(categories => {
@@ -22,23 +23,45 @@ const Shop = () => {
         console.log(categories.error);
         setError(categories.error);
       } else {
-        console.log("HERE", categories);
         setCategories(categories);
       }
     });
   };
 
   const loadFilteredResults = newFilters => {
-    console.log("FILTERS GOING TO THE BACKEND", newFilters);
     getFilteredProducts(skip, limit, newFilters).then(filteredProducts => {
       if (filteredProducts.error) {
         console.log("SOME WENTT WRONG");
         setError(filteredProducts.error);
       } else {
-        console.log("FILTERED PRODUCTS", filteredProducts);
         setFilteredResults(filteredProducts.data);
+        setSize(filteredProducts.size);
       }
     });
+  };
+
+  const loadMore = () => {
+    let nextBatch = skip + limit;
+    getFilteredProducts(nextBatch, limit, myFilters.filters).then(data => {
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setFilteredResults([...filteredResults, ...data.data]);
+        setSize(data.size);
+        setSkip(nextBatch);
+      }
+    });
+  };
+
+  const loadMoreButton = () => {
+    return (
+      size > 0 &&
+      size >= limit && (
+        <button onClick={loadMore} className="btn btn-warning mb-5">
+          Load More
+        </button>
+      )
+    );
   };
 
   useEffect(() => {
@@ -96,12 +119,13 @@ const Shop = () => {
           </div>
         </div>
         <div className="col-8">right</div>
-        <h2 className="mb-4">Here's what we have</h2>
         <div className="row">
           {filteredResults.map((product, index) => {
             return <ProductItem key={index} product={product} />;
           })}
         </div>
+        <br />
+        {loadMoreButton()}
       </div>
     </Layout>
   );

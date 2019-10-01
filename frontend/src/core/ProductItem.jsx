@@ -25,7 +25,7 @@ const ProductItem = ({ product }) => {
         </div>
       </div>
       <div className="card-footer">
-        <footer class="blockquote">
+        <footer className="blockquote">
           <cite title="Source Title"></cite>
         </footer>
       </div>

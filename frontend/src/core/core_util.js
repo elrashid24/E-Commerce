@@ -1,3 +1,5 @@
+import queryString from 'query-string'
+
 export const getProducts = (sortBy) => {
     return fetch(`http://localhost:8000/products?sortBy=${sortBy}&order=desc&limit=6`, {
         method: 'GET'
@@ -33,3 +35,14 @@ export const getFilteredProducts = (skip, limit, filters = {}) => {
         })
         .catch(err => console.log(err));
 };
+
+export const list = params => {
+    const searchParams = queryString.stringify(params)
+    console.log('SEARCH PARAMS', searchParams)
+    return fetch(`http://localhost:8000/products/search?${searchParams}`, {
+        method: 'GET'
+    }).then(result => {
+        console.log('THIS WHAT THE BACKEND FOUND', result)
+        return result.json()
+    }).catch(error => console.log(error))
+}

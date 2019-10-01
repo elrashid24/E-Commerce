@@ -147,7 +147,7 @@ exports.list = (req, res) => {
   let order = req.query.order ? req.query.order : "asc";
   let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
   let limit = req.query.limit ? parseInt(req.query.limit) : 62;
-
+  console.log(req)
   Product.find()
     .select("-photo")
     .populate("category")
@@ -257,4 +257,33 @@ exports.photo = (req, res, next) => {
     console.log('DAFQ')
   }
   next()
+}
+
+exports.listSearch = (req, res) => {
+  console.log('MOTHERFUCKER',
+    req.query)
+  const query = {}
+
+  if (req.query.search) {
+    query.name = {
+      $regex: req.query.search,
+      $options: "i"
+    }
+  }
+
+  if (req.query.category && req.query.category != 'All') {
+    query.category =
+      req.query.category
+  }
+  console.log('QUEEROOO', query)
+
+  Product.find(query, (err, products) => {
+    if (err) {
+      return res.status(400).json({
+        error: errorHandler(err)
+      })
+    } else {
+      res.json(products)
+    }
+  }).select("-photo")
 }
