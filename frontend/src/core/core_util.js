@@ -53,3 +53,12 @@ export const getSingleProduct = productId => {
         return product.json()
     }).catch(error => console.log(error))
 }
+
+export const listRelatedProducts = productId => {
+    return fetch(`http://localhost:8000/products/related/${productId}`, {
+        method: `GET`,
+
+    }).then(products => {
+        return products.json()
+    }).catch(error => console.log(error))
+}

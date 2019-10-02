@@ -40,7 +40,7 @@ const Home = () => {
         {productsByArrival.map((product, idx) => {
           return (
             <div className="col-4 mb-3" key={idx}>
-              <ProductItem product={product} />;
+              <ProductItem product={product} />
             </div>
           );
         })}

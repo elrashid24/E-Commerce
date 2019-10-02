@@ -22,7 +22,7 @@ const ProductItem = ({ product, showViewProductButton = true }) => {
     return product.quantity > 0 ? (
       <span className="badge badge-primary badge-pill">In Stock</span>
     ) : (
-      <span className="badge badge-primary badge-pill">Out of Stock</span>
+      <span className="badge badge-warning badge-pill">Out of Stock</span>
     );
   };
   return (
@@ -40,12 +40,14 @@ const ProductItem = ({ product, showViewProductButton = true }) => {
         <p className="black-8">
           Added {moment(product.createdAt).fromNow()} {showStockButton(product)}
         </p>
-        <Link to={`/product/${product._id}`}>
-          <button className="btn btn-success mt-2 mb-2 mr-3">
-            Add to Cart
-          </button>
-          {showViewButton(showViewProductButton)}
-        </Link>
+        <div className="bottom-container">
+          <Link to={`/product/${product._id}`}>
+            <button className="btn btn-success mt-2 mb-2 mr-3">
+              Add to Cart
+            </button>
+            {showViewButton(showViewProductButton)}
+          </Link>
+        </div>
       </div>
     </div>
   );
