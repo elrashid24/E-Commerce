@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ProductPhoto from "./ProductPhoto";
+import moment from "moment";
+
 const ProductItem = ({ product, showViewProductButton = true }) => {
   product.description = product.description || "   ";
   const showViewButton = showViewProductButton => {
@@ -15,23 +17,36 @@ const ProductItem = ({ product, showViewProductButton = true }) => {
       )
     );
   };
+
+  const showStockButton = product => {
+    return product.quantity > 0 ? (
+      <span className="badge badge-primary badge-pill">In Stock</span>
+    ) : (
+      <span className="badge badge-primary badge-pill">Out of Stock</span>
+    );
+  };
   return (
-    <div
-      className="card card text-white "
-      // style={{ background: "whitesmoke" }}
-    >
+    <div className="card card text-white ">
       <div className="card-header "> {product.name}</div>
       <div className="card-body">
-        <ProductPhoto item={product} url="product" key={product._id} />
-        {/* <p>{product.description.slice(0, 50)}... || product.price</p> */}
-        <p className="black-9">${product.price}</p>
         <Link to={`/product/${product._id}`}>
-          <button className="btn btn-success mt-2 mb-2">Add to Cart</button>
+          <ProductPhoto item={product} url="product" key={product._id} />
+        </Link>
+        <p className="lead mt-2">{product.description.slice(0, 100)}...</p>
+        <p className="black-9">Price: ${product.price}</p>
+        <p className="black-8">
+          Category: {product.category && product.category.name}
+        </p>
+        <p className="black-8">
+          Added {moment(product.createdAt).fromNow()} {showStockButton(product)}
+        </p>
+        <Link to={`/product/${product._id}`}>
+          <button className="btn btn-success mt-2 mb-2 mr-3">
+            Add to Cart
+          </button>
           {showViewButton(showViewProductButton)}
         </Link>
       </div>
-      {/* <footer className="blockquote"></footer>
-      <div className="card-footer"></div> */}
     </div>
   );
 };
