@@ -1,8 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ProductPhoto from "./ProductPhoto";
-const ProductItem = ({ product }) => {
+const ProductItem = ({ product, showViewProductButton = true }) => {
   product.description = product.description || "   ";
+  const showViewButton = showViewProductButton => {
+    return (
+      showViewProductButton && (
+        <button
+          className="btn btn-light mt-2 mb-2 mr-5"
+          style={{ background: "#8E0E00", border: "none", color: "white" }}
+        >
+          Take a Closer Look
+        </button>
+      )
+    );
+  };
   return (
     <div
       className="card card text-white "
@@ -14,13 +26,8 @@ const ProductItem = ({ product }) => {
         {/* <p>{product.description.slice(0, 50)}... || product.price</p> */}
         <p className="black-9">${product.price}</p>
         <Link to={`/product/${product._id}`}>
-          <button
-            className="btn btn-light mt-2 mb-2 mr-5"
-            style={{ background: "#8E0E00", border: "none", color: "white" }}
-          >
-            Take a Closer Look
-          </button>
           <button className="btn btn-success mt-2 mb-2">Add to Cart</button>
+          {showViewButton(showViewProductButton)}
         </Link>
       </div>
       {/* <footer className="blockquote"></footer>

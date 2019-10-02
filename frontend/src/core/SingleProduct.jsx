@@ -27,7 +27,11 @@ const SingleProduct = props => {
       description={product.description || product.price}
       className="container-fluid"
     >
-      <ProductItem key={product._id} product={product} />
+      <ProductItem
+        key={product._id}
+        product={product}
+        showViewProductButton={false}
+      />
     </Layout>
   );
 };
