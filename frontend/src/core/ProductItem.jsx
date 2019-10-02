@@ -12,7 +12,7 @@ const ProductItem = ({ product }) => {
       <div className="card-body">
         <ProductPhoto item={product} url="product" key={product._id} />
         {/* <p>{product.description.slice(0, 50)}... || product.price</p> */}
-        <p>${product.price}</p>
+        <p className="black-9">${product.price}</p>
         <Link to={`/product/${product._id}`}>
           <button
             className="btn btn-light mt-2 mb-2 mr-5"
@@ -23,11 +23,8 @@ const ProductItem = ({ product }) => {
           <button className="btn btn-success mt-2 mb-2">Add to Cart</button>
         </Link>
       </div>
-      <div className="card-footer">
-        <footer className="blockquote">
-          <cite title="Source Title"></cite>
-        </footer>
-      </div>
+      {/* <footer className="blockquote"></footer>
+      <div className="card-footer"></div> */}
     </div>
   );
 };
