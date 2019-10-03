@@ -147,7 +147,7 @@ exports.list = (req, res) => {
   let order = req.query.order ? req.query.order : "asc";
   let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
   let limit = req.query.limit ? parseInt(req.query.limit) : 62;
-  console.log(req)
+
   Product.find()
     .select("-photo")
     .populate("category")
@@ -211,7 +211,7 @@ exports.listBySearch = (req, res) => {
 
   const filterObject = req.body.filters.filters
 
-  console.log(filterObject)
+
 
   for (let key in filterObject) {
     if (filterObject[key].length > 0) {
@@ -227,7 +227,7 @@ exports.listBySearch = (req, res) => {
       }
     }
   }
-  console.log('FIND-ARGS', findArgs)
+
   Product.find(findArgs)
     .select("-photo")
     .populate("category")
@@ -254,7 +254,7 @@ exports.photo = (req, res, next) => {
     res.set('Content-Type', req.product.photo.contentType)
     return res.send(req.product.photo.data)
   } else {
-    console.log('DAFQ')
+
   }
   next()
 }
