@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import ProductPhoto from "./ProductPhoto";
 import moment from "moment";
-import { addProductToCart } from "./cardHelperMethods";
+import { addProductToCart } from "./cartHelperMethods";
 
 const ProductItem = ({
   product,

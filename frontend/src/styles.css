@@ -97,3 +97,11 @@
         background-position: 0% 50%;
     }
 }
+
+.cart-badge,
+.cart-badge:hover {
+    border-radius: 60%;
+    padding: 2px;
+    font-size: 12px;
+    background: forestgreen;
+}
