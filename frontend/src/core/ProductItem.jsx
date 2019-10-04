@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import ProductPhoto from "./ProductPhoto";
 import moment from "moment";
-import { addProductToCart } from "./cartHelperMethods";
+import { addProductToCart, updateItem } from "./cartHelperMethods";
 
 const ProductItem = ({
   product,
   showViewProductButton = true,
-  showAddToCartButton = true
+  showAddToCartButton = true,
+  cartUpdate = false
 }) => {
   product.description = product.description || "   ";
 
   const [redirect, setRedirect] = useState(false);
+  const [count, setCount] = useState(product.count);
 
   const showViewButton = showViewProductButton => {
     return (
@@ -41,10 +43,21 @@ const ProductItem = ({
       return <Redirect to="/cart"></Redirect>;
     }
   };
+
+  const handleChange = productId => event => {
+    setCount(event.target.value < 1 ? 1 : event.target.value);
+    if (event.target.value >= 1) {
+      updateItem(productId, event.target.value);
+    }
+  };
   const showAddToCartBtn = showAddToCartButton => {
     return (
       showAddToCartButton && (
-        <button onClick={addToCart} className="btn btn-success mt-2 mb-2 mr-5">
+        <button
+          onClick={addToCart}
+          className="btn btn-success mt-2 mb-2 mr-5"
+          value={count}
+        >
           Add to cart
         </button>
       )
@@ -55,6 +68,24 @@ const ProductItem = ({
     addProductToCart(product, () => {
       setRedirect(true);
     });
+  };
+
+  const showCartUpdateOptions = cartUpdate => {
+    return (
+      cartUpdate && (
+        <div className="input-group mb-3">
+          <div className="input-group-prepend">
+            <span className="input-group-text">Quantity</span>
+          </div>
+          <input
+            onChange={handleChange(product._id)}
+            className="form-control"
+            type="number"
+            value={count}
+          />
+        </div>
+      )
+    );
   };
   return (
     <div className="card card text-white ">
@@ -77,6 +108,7 @@ const ProductItem = ({
           <Link to={`/product/${product._id}`}>
             {showViewButton(showViewProductButton)}
           </Link>
+          {showCartUpdateOptions(cartUpdate)}
         </div>
       </div>
     </div>

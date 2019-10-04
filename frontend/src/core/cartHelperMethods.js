@@ -1,17 +1,14 @@
 export const addProductToCart = (item, next) => {
-    console.log('FUCK ME', item)
     let cart = []
     if (typeof window !== 'undefined') {
         if (localStorage.getItem('cart')) {
             cart = JSON.parse(localStorage.getItem('cart'))
         }
-
         cart.push({
             ...item,
             count: 1
         })
         cart = Array.from(new Set(cart.map((p) => (p._id)))).map(id => {
-            console.group('big cart', cart)
             return cart.find(p => p._id === id)
         })
         localStorage.setItem('cart', JSON.stringify(cart))
@@ -34,4 +31,22 @@ export const getCart = () => {
         }
     }
     return []
+}
+
+export const updateItem = (productId, count) => {
+    let cart = []
+    if (typeof window !== 'undefined') {
+        if (localStorage.getItem('cart')) {
+            cart = JSON.parse(localStorage.getItem('cart'))
+            console.log('BIG CART', cart)
+        } else {
+            console.log('TINY CART')
+        }
+        cart.map((product, i) => {
+            if (product._id === productId) {
+                cart[i].count = count
+            }
+        })
+        localStorage.setItem('cart,', JSON.stringify(cart))
+    }
 }
