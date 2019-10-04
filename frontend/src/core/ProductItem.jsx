@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import ProductPhoto from "./ProductPhoto";
 import moment from "moment";
-import { addProductToCart, updateItem } from "./cartHelperMethods";
+import { addProductToCart, updateItem, removeItem } from "./cartHelperMethods";
 
 const ProductItem = ({
   product,
   showViewProductButton = true,
   showAddToCartButton = true,
-  cartUpdate = false
+  cartUpdate = false,
+  showRemoveProductButton = false,
+  setRun = f => f, // default value of function
+  run = undefined
 }) => {
   product.description = product.description || "   ";
 
@@ -45,6 +48,7 @@ const ProductItem = ({
   };
 
   const handleChange = productId => event => {
+    setRun(!run);
     setCount(event.target.value < 1 ? 1 : event.target.value);
     if (event.target.value >= 1) {
       updateItem(productId, event.target.value);
@@ -59,6 +63,21 @@ const ProductItem = ({
           value={count}
         >
           Add to cart
+        </button>
+      )
+    );
+  };
+  const showRemoveProductBtn = showRemoveProductButton => {
+    return (
+      showRemoveProductButton && (
+        <button
+          onClick={() => {
+            removeItem(product._id);
+            setRun(!run);
+          }}
+          className="btn btn-danger mt-2 mb-2 mr-5"
+        >
+          Remove Item From Cart
         </button>
       )
     );
@@ -109,6 +128,7 @@ const ProductItem = ({
             {showViewButton(showViewProductButton)}
           </Link>
           {showCartUpdateOptions(cartUpdate)}
+          {showRemoveProductBtn(showRemoveProductButton)}
         </div>
       </div>
     </div>

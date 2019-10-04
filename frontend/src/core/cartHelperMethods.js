@@ -38,10 +38,7 @@ export const updateItem = (productId, count) => {
     if (typeof window !== 'undefined') {
         if (localStorage.getItem('cart')) {
             cart = JSON.parse(localStorage.getItem('cart'))
-            console.log('BIG CART', cart)
-        } else {
-            console.log('TINY CART')
-        }
+        } else {}
         cart.map((product, i) => {
             if (product._id === productId) {
                 cart[i].count = count
@@ -49,4 +46,24 @@ export const updateItem = (productId, count) => {
         })
         localStorage.setItem('cart,', JSON.stringify(cart))
     }
+}
+
+export const removeItem = (productId) => {
+    let cart = []
+    if (typeof window !== 'undefined') {
+        if (localStorage.getItem('cart')) {
+            console.log('BIG CART', cart)
+            cart = JSON.parse(localStorage.getItem('cart'))
+        } else {
+
+        }
+        cart.map((product, i) => {
+            if (product._id === productId) {
+                cart.splice(i, 1)
+            }
+        })
+        localStorage.setItem('cart,', JSON.stringify(cart))
+    }
+    console.log('TINY CART', cart)
+    return cart
 }
