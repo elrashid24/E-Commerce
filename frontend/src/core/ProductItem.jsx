@@ -22,7 +22,7 @@ const ProductItem = ({
     return (
       showViewProductButton && (
         <button
-          className="btn btn-success mt-2 mb-2 mr-5"
+          className="btn btn-success mt-2 "
           style={{
             background: "#8e0e00"
           }}
@@ -57,11 +57,7 @@ const ProductItem = ({
   const showAddToCartBtn = showAddToCartButton => {
     return (
       showAddToCartButton && (
-        <button
-          onClick={addToCart}
-          className="btn btn-success mt-2 mb-2 mr-5"
-          value={count}
-        >
+        <button onClick={addToCart} className="btn btn-success " value={count}>
           Add to cart
         </button>
       )
@@ -74,7 +70,7 @@ const ProductItem = ({
           onClick={() => {
             removeItem(product._id);
           }}
-          className="btn btn-danger mt-2 mb-2 mr-5"
+          className="btn btn-danger "
         >
           Remove Item From Cart
         </button>
