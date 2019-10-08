@@ -1,6 +1,6 @@
 export const addProductToCart = (item, next) => {
-    let cart = []
     if (typeof window !== 'undefined') {
+        let cart = []
         if (localStorage.getItem('cart')) {
             cart = JSON.parse(localStorage.getItem('cart'))
         }
@@ -27,18 +27,21 @@ export const itemTotal = () => {
 export const getCart = () => {
     if (typeof window !== 'undefined') {
         if (localStorage.getItem('cart')) {
-            return JSON.parse(localStorage.getItem('cart'))
+            const carty = JSON.parse(localStorage.getItem('cart'))
+            return carty
         }
     }
     return []
 }
 
 export const updateItem = (productId, count) => {
+    console.log('UPDATE_ID', productId)
     let cart = []
     if (typeof window !== 'undefined') {
         if (localStorage.getItem('cart')) {
+
             cart = JSON.parse(localStorage.getItem('cart'))
-        } else {}
+        }
         cart.map((product, i) => {
             if (product._id === productId) {
                 cart[i].count = count
@@ -51,19 +54,19 @@ export const updateItem = (productId, count) => {
 export const removeItem = (productId) => {
     let cart = []
     if (typeof window !== 'undefined') {
-        if (localStorage.getItem('cart')) {
-            console.log('BIG CART', cart)
+        if (localStorage.getItem('cart').length > 1) {
             cart = JSON.parse(localStorage.getItem('cart'))
+            console.log('BIG CART', cart)
         } else {
 
         }
         cart.map((product, i) => {
             if (product._id === productId) {
-                cart.splice(i, 1)
+                console.log('product being removed', product)
+                cart.pop(i)
             }
         })
-        localStorage.setItem('cart,', JSON.stringify(cart))
+        localStorage.setItem('cart', JSON.stringify(cart))
     }
-    console.log('TINY CART', cart)
     return cart
 }
