@@ -109,7 +109,7 @@ const ProductItem = ({
         <Link to={`/product/${product._id}`}>
           <ProductPhoto item={product} url="product" key={product._id} />
         </Link>
-        <p className="lead mt-2">{product.description.slice(0, 100)}...</p>
+        <p className="lead mt-2">{product.description.slice(0, 80)}...</p>
         <p className="black-9">Price: ${product.price}</p>
         <p className="black-8">
           Category: {product.category && product.category.name}

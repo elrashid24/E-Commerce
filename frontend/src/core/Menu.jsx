@@ -14,12 +14,12 @@ const Menu = ({ history }) => {
     <div>
       <div>
         <ul className="navbar">
-          <li className="nav-item">
+          <li className="nav-item" style={{ listStyle: "none" }}>
             <Link className="nav-link" to="/" style={activeLink(history, "/")}>
               Home
             </Link>
           </li>
-          <li className="nav-item">
+          <li className="nav-item" style={{ listStyle: "none" }}>
             <Link
               className="nav-link"
               to="/shop"
@@ -28,7 +28,7 @@ const Menu = ({ history }) => {
               Shop
             </Link>
           </li>
-          <li className="nav-item">
+          <li className="nav-item" style={{ listStyle: "none" }}>
             <Link
               className="nav-link"
               to="/cart"
@@ -42,7 +42,7 @@ const Menu = ({ history }) => {
           </li>
 
           {isAuthenticated() && isAuthenticated().user.role === 0 && (
-            <li className="nav-item">
+            <li className="nav-item" style={{ listStyle: "none" }}>
               <Link
                 className="nav-link"
                 to="user/dashboard"
@@ -53,7 +53,7 @@ const Menu = ({ history }) => {
             </li>
           )}
           {isAuthenticated() && isAuthenticated().user.role === 1 && (
-            <li className="nav-item">
+            <li className="nav-item" style={{ listStyle: "none" }}>
               <Link
                 className="nav-link"
                 to="/admin/dashboard"
@@ -66,7 +66,7 @@ const Menu = ({ history }) => {
 
           {!isAuthenticated() && (
             <React.Fragment>
-              <li className="nav-item">
+              <li className="nav-item" style={{ listStyle: "none" }}>
                 <Link
                   className="nav-link"
                   to="/signin"
@@ -75,7 +75,7 @@ const Menu = ({ history }) => {
                   Sign in
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className="nav-item" style={{ listStyle: "none" }}>
                 <Link
                   className="nav-link"
                   to="/signup"
@@ -89,7 +89,7 @@ const Menu = ({ history }) => {
 
           {isAuthenticated() && (
             <span>
-              <li className="nav-item">
+              <li className="nav-item" style={{ listStyle: "none" }}>
                 <Link
                   className="nav-link"
                   to="/"
