@@ -73,7 +73,6 @@ const ProductItem = ({
         <button
           onClick={() => {
             removeItem(product._id);
-            setRun(!run);
           }}
           className="btn btn-danger mt-2 mb-2 mr-5"
         >
