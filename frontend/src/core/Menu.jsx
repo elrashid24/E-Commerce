@@ -34,7 +34,7 @@ const Menu = ({ history }) => {
               to="/cart"
               style={activeLink(history, "/cart")}
             >
-              My Cart{" "}
+              My Cart
               <sup>
                 <small className="cart-badge">{itemTotal()}</small>
               </sup>

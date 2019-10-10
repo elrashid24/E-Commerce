@@ -27,8 +27,7 @@ export const itemTotal = () => {
 export const getCart = () => {
     if (typeof window !== 'undefined') {
         if (localStorage.getItem('cart')) {
-            const carty = JSON.parse(localStorage.getItem('cart'))
-            return carty
+            return JSON.parse(localStorage.getItem('cart'))
         }
     }
     return []
@@ -45,28 +44,25 @@ export const updateItem = (productId, count) => {
         cart.map((product, i) => {
             if (product._id === productId) {
                 cart[i].count = count
+
             }
         })
-        localStorage.setItem('cart,', JSON.stringify(cart))
+        localStorage.setItem('cart', JSON.stringify(cart))
     }
 }
 
 export const removeItem = (productId) => {
     let cart = []
     if (typeof window !== 'undefined') {
-        if (localStorage.getItem('cart').length > 1) {
-            cart = JSON.parse(localStorage.getItem('cart'))
-            console.log('BIG CART', cart)
-        } else {
-
-        }
-        cart.map((product, i) => {
-            if (product._id === productId) {
-                console.log('product being removed', product)
-                cart.pop(i)
-            }
-        })
-        localStorage.setItem('cart', JSON.stringify(cart))
+        cart = JSON.parse(localStorage.getItem('cart'))
+        console.log('BIG CART', cart)
     }
+    cart.map((product, i) => {
+        if (product._id === productId) {
+            console.log('product being removed', product)
+            cart.pop(i)
+        }
+        localStorage.setItem('cart', JSON.stringify(cart))
+    })
     return cart
 }
