@@ -3,6 +3,7 @@ const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/user')
 const categoryRoutes = require('./routes/category')
 const productRoutes = require('./routes/product')
+const braintreeRoutes = require('./routes/braintree')
 const express = require('express')
 const app = express()
 const mongoose = require("mongoose")
@@ -15,8 +16,7 @@ app.use(cors())
 
 
 
-mongoose.connect(process.env.DATABASE
-    , {
+mongoose.connect(process.env.DATABASE, {
     useNewUrlParser: true,
     useCreateIndex: true
 }).then(() => console.log("Connected to MonogoDB"), err => console.log(err))
@@ -31,6 +31,7 @@ app.use(authRoutes)
 app.use(userRoutes)
 app.use(categoryRoutes)
 app.use(productRoutes)
+app.use(braintreeRoutes)
 
 const port = process.env.PORT || 8000
 

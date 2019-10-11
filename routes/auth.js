@@ -13,7 +13,4 @@ const {
 router.post('/signup', userSignupValidator, signup)
 router.post('/signin', signin)
 router.get('/signout', signout)
-router.get('/hello', requireSignIn, (req, res) => {
-    res.send("Hello, Fat Man!")
-})
 module.exports = router
