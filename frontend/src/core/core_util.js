@@ -63,8 +63,8 @@ export const listRelatedProducts = productId => {
     }).catch(error => console.log(error))
 }
 
-const getBraintreeClientToken = (userId, token) => {
-    fetch(`http://localhost:8000/braintree/getToken/${userId}`, {
+export const getBraintreeClientToken = (userId, token) => {
+    return fetch(`http://localhost:8000/braintree/getToken/${userId}`, {
         method: `GET`,
         headers: {
             Accept: "application/json",
@@ -74,5 +74,5 @@ const getBraintreeClientToken = (userId, token) => {
 
     }).then(token => {
         return token.json()
-    }).then(error => console.log(error))
+    }).catch(error => console.log(error))
 }
