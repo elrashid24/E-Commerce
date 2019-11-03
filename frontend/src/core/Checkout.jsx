@@ -64,6 +64,11 @@ const Checkout = ({ products }) => {
       </Link>
     );
   };
+
+  const buy = () => {
+    let nonce; 
+    let getNonce = data.instance.requestPaymentMethod()
+  }
   return (
     <div>
       <h2>Total: ${getTotal()}</h2>
