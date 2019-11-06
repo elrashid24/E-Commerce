@@ -59,7 +59,12 @@ const Search = () => {
   const searchForm = () => {
     return (
       <form onSubmit={handleSubmit}>
-        <span className="input-group-text mb-3">
+        <span
+          style={{
+            background: "#B0C4DE"
+          }}
+          className="input-group-text mb-3"
+        >
           <div className="input-group input-group-lg">
             <div className="input-group-prepend">
               <select className="btn mr-2" onChange={handleChange("category")}>

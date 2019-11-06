@@ -3,20 +3,68 @@
     flex-direction: column;
     align-items: center;
     align-content: center;
+    position: -webkit-sticky;
 }
 
 .jumbotron {
-    background-image: url(./hoops-jumbo.jpeg);
+
+    /* background-image: url(./bb.jpg); */
     background-size: cover;
-    height: 50vh;
-    width: 150vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 80%;
 
 }
+
+.home-pics-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+    height: 500px;
+}
+
+.jumbo-pic1 {
+    height: 80%;
+    width: 20%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+/* .jumbo-pic1:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+} */
+
+.jumbo-pic2 {
+    height: auto;
+    width: 32%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.jumbo-pic3 {
+    height: 80%;
+    width: 20%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
 
 
 
 .navbar {
-    background: linear-gradient(to right, #8e0e00, #1f1c18);
+    /* background: linear-gradient(to right, #8e0e00, #1f1c18);
+    */
+    /* background: #00bfff; */
+    background: linear-gradient(to right, #654ea3, #eaafc8);
 }
 
 .card-header {
