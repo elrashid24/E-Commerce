@@ -104,7 +104,7 @@ const ProductItem = ({
     );
   };
   return (
-    <div className="card card text-white ">
+    <div className="card">
       <div className="card-header "> {product.name}</div>
       <div className="card-body">
         {redirectToCartPage(redirect)}
@@ -119,14 +119,12 @@ const ProductItem = ({
         <p className="black-8">
           Added {moment(product.createdAt).fromNow()} {showStockButton(product)}
         </p>
-        <div className="bottom-container">
-          {showAddToCartBtn(showAddToCartButton)}
-          <Link to={`/product/${product._id}`}>
-            {showViewButton(showViewProductButton)}
-          </Link>
-          {showCartUpdateOptions(cartUpdate)}
-          {showRemoveProductBtn(showRemoveProductButton)}
-        </div>
+        {showAddToCartBtn(showAddToCartButton)}
+        <Link to={`/product/${product._id}`}>
+          {showViewButton(showViewProductButton)}
+        </Link>
+        {showCartUpdateOptions(cartUpdate)}
+        {showRemoveProductBtn(showRemoveProductButton)}
       </div>
     </div>
   );

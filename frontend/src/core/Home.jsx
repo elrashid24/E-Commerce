@@ -33,8 +33,7 @@ const Home = () => {
     loadProductsBySold();
   }, []);
   return (
-    <Layout title="My Project" description="Home" className="container-fluid">
-      <Search />
+    <Layout title="My Project" description="Home">
       <h2 className="mb-4">Latest Products</h2>
       <div className="row">
         {productsByArrival.map((product, idx) => {
