@@ -33,7 +33,7 @@ const Home = () => {
     loadProductsBySold();
   }, []);
   return (
-    <Layout title="My Project" description="Home">
+    <Layout title="My Project" description="Welcome">
       <div className="cards-container">
         <h2 className="mb-4">Latest Products</h2>
         <div className="row">

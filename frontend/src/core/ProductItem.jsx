@@ -24,7 +24,7 @@ const ProductItem = ({
         <button
           className="btn btn-success mt-2 "
           style={{
-            background: "#8e0e00"
+            background: "#141e30"
           }}
         >
           Take a Closer Look
