@@ -104,13 +104,15 @@ const ProductItem = ({
     );
   };
   return (
-    <div className="card">
+    <div>
       <div className="card-header "> {product.name}</div>
       <div className="card-body">
         {redirectToCartPage(redirect)}
-        <Link to={`/product/${product._id}`}>
-          <ProductPhoto item={product} url="product" key={product._id} />
-        </Link>
+        <div className="product-photo-container">
+          {/* <Link to={`/product/${product._id}`}>
+            <ProductPhoto item={product} url="product" key={product._id} />
+          </Link> */}
+        </div>
         <p className="lead mt-2">{product.description.slice(0, 80)}...</p>
         <p className="black-9">Price: ${product.price}</p>
         <p className="black-8">

@@ -34,26 +34,28 @@ const Home = () => {
   }, []);
   return (
     <Layout title="My Project" description="Home">
-      <h2 className="mb-4">Latest Products</h2>
-      <div className="row">
-        {productsByArrival.map((product, idx) => {
-          return (
-            <div className="col-4 mb-3" key={idx}>
-              <ProductItem product={product} />
-            </div>
-          );
-        })}
-      </div>
-      <br />
-      <h2 className="mb-4">Popular Products</h2>
-      <div className="row">
-        {productsBySold.map((product, idx) => {
-          return (
-            <div className="col-4 mb-3" key={idx}>
-              <ProductItem product={product} />
-            </div>
-          );
-        })}
+      <div className="cards-container">
+        <h2 className="mb-4">Latest Products</h2>
+        <div className="row">
+          {productsByArrival.map((product, idx) => {
+            return (
+              <div className="col-4 mb-3" key={idx}>
+                <ProductItem product={product} />
+              </div>
+            );
+          })}
+        </div>
+        <br />
+        <h2 className="mb-4">Popular Products</h2>
+        <div className="row">
+          {productsBySold.map((product, idx) => {
+            return (
+              <div className="col-4 mb-3" key={idx}>
+                <ProductItem product={product} />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </Layout>
   );
