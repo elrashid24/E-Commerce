@@ -104,7 +104,7 @@ const ProductItem = ({
     );
   };
   return (
-    <div>
+    <div className="card">
       <div className="card-header "> {product.name}</div>
       <div className="card-body">
         {redirectToCartPage(redirect)}
