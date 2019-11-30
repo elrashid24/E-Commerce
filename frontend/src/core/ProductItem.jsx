@@ -108,10 +108,10 @@ const ProductItem = ({
       <div className="card-header "> {product.name}</div>
       <div className="card-body">
         {redirectToCartPage(redirect)}
-        <div className="product-photo-container">
-          {/* <Link to={`/product/${product._id}`}>
+        <div class="card-img-container">
+          <Link to={`/product/${product._id}`}>
             <ProductPhoto item={product} url="product" key={product._id} />
-          </Link> */}
+          </Link>
         </div>
         <p className="lead mt-2">{product.description.slice(0, 80)}...</p>
         <p className="black-9">Price: ${product.price}</p>
