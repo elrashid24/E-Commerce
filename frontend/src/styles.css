@@ -57,6 +57,9 @@
   margin-right: 35px;
   margin-left: 35px;
   max-width: 500px;
+  border-bottom: 30px outset;
+  border-color: linear-gradient(to top, #485563, #29323c);
+
 
   /* height: 700px; */
 }
@@ -72,9 +75,7 @@
   text-shadow: 4px 4px 4px black;
 }
 
-.card-footer {
-  background: linear-gradient(to top, #141e30, #243b55);
-}
+
 
 .card-body {
   color: #141e30;

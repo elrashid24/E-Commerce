@@ -35,8 +35,8 @@ const Home = () => {
   return (
     <Layout title="My Project" description="Welcome">
       <div className="cards-container">
-        <Search/>
-        <h2 className="mb-4">Latest Products</h2>
+        <Search />
+        <h1 className="mb-4 ml-4">Latest Products</h1>
         <div className="row">
           {productsByArrival.map((product, idx) => {
             return (
@@ -47,7 +47,7 @@ const Home = () => {
           })}
         </div>
         <br />
-        <h2 className="mb-4">Popular Products</h2>
+        <h1 className="mb-4 ml-4">Popular Products</h1>
         <div className="row">
           {productsBySold.map((product, idx) => {
             return (

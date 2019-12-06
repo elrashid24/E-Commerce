@@ -94,7 +94,7 @@ const Shop = () => {
   };
 
   return (
-    <Layout title="Home Page" description="Shop" className="container-fluid">
+    <Layout title="Home Page" description="Customize your results" className="container-fluid">
       <div className="row">
         <div className="col-4">
           <h4>Filter Products By Category:</h4>
