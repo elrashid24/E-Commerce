@@ -12,8 +12,8 @@ import AdminDashboard from "./user/AdminDashboard";
 import AddCategory from "./admin/AddCategory";
 import AddProduct from "./admin/AddProduct";
 import SingleProduct from "./core/SingleProduct";
-import Searches from "./core/Searches";
 import Cart from "./core/Cart";
+import ManageProducts from "./admin/ManageProducts";
 //routes
 import PrivateRoutes from "./auth_api/ProtectedRoutes";
 import AdminRoutes from "./auth_api/AdminRoutes";
@@ -28,7 +28,7 @@ const Routes = () => {
         <Route path="/signin" exact component={Signin}></Route>
         <Route path="/signup" exact component={Signup}></Route>
         <Route path="/cart" exact component={Cart}></Route>
-        <Route path="/searches" exact component={Searches}></Route>
+
         <Route
           path="/product/:productId"
           exact
@@ -40,6 +40,7 @@ const Routes = () => {
         <AdminRoutes path="/admin/dashboard" exact component={AdminDashboard} />
         <AdminRoutes path="/create/category" exact component={AddCategory} />
         <AdminRoutes path="/create/product" exact component={AddProduct} />
+        <AdminRoutes path="/admin/products" exact component={ManageProducts} />
       </Switch>
     </BrowserRouter>
   );

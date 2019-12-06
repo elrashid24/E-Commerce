@@ -28,6 +28,14 @@ const AdminDashboard = () => {
               Create a Product
             </Link>
           </li>
+          <li className="list-group-item">
+            <Link
+              to="/admin/products"
+              style={{ color: "black", cursor: "pointer" }}
+            >
+              Manage Products
+            </Link>
+          </li>
         </ul>
       </div>
     );
