@@ -51,6 +51,7 @@ const ProductItem = ({
     setRun(!run);
     setCount(event.target.value < 1 ? 1 : event.target.value);
     if (event.target.value >= 1) {
+      updateItem(productId, count);
     }
   };
   const showAddToCartBtn = showAddToCartButton => {
