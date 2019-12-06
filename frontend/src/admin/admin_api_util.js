@@ -11,7 +11,7 @@
           .then(response => {
               return response.json();
           })
-          .catch(err => console.log(err));
+          .catch(err => (err));
   };
   export const createProduct = (userId, token, product) => {
       return fetch(`http://localhost:8000/product/create/${userId}`, {
@@ -26,5 +26,5 @@
           .then(response => {
               return response.json();
           })
-          .catch(err => console.log(err));
+          .catch(err => (err));
   };

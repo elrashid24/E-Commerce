@@ -35,7 +35,7 @@ const Home = () => {
   return (
     <Layout title="My Project" description="Welcome">
       <div className="cards-container">
-        <Search />
+        <Search/>
         <h2 className="mb-4">Latest Products</h2>
         <div className="row">
           {productsByArrival.map((product, idx) => {

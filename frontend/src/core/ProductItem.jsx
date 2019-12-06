@@ -48,11 +48,9 @@ const ProductItem = ({
   };
 
   const handleChange = productId => event => {
-    console.log("update item", productId);
     setRun(!run);
     setCount(event.target.value < 1 ? 1 : event.target.value);
     if (event.target.value >= 1) {
-      console.log(updateItem(productId, event.target.value));
     }
   };
   const showAddToCartBtn = showAddToCartButton => {

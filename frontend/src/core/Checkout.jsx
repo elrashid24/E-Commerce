@@ -23,9 +23,7 @@ const Checkout = ({ products }) => {
 
   const getToken = async (userId, token) => {
     getBraintreeClientToken(userId, token).then(data => {
-      console.log(data);
       if (data.error) {
-        console.log(data.error);
         setData({ ...data, error: data.error });
       } else {
         setData({ ...data, clientToken: data.clientToken });
@@ -66,9 +64,9 @@ const Checkout = ({ products }) => {
   };
 
   const buy = () => {
-    let nonce; 
-    let getNonce = data.instance.requestPaymentMethod()
-  }
+    let nonce;
+    let getNonce = data.instance.requestPaymentMethod();
+  };
   return (
     <div>
       <h2>Total: ${getTotal()}</h2>

@@ -36,7 +36,6 @@ const Search = () => {
       return list({ search: search || undefined, category: category }).then(
         response => {
           if (response.error) {
-            console.log("error in search", response.error);
           } else {
             setData({ ...data, results: response, searched: true });
           }
@@ -47,7 +46,6 @@ const Search = () => {
 
   const searchedMessage = (searched, results) => {
     if (searched && results.length > 0) {
-      console.log(results, searched);
       return `We have ${results.length} items that match your search`;
     }
     if (searched && results.length < 1) {

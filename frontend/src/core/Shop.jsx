@@ -21,7 +21,6 @@ const Shop = () => {
   const loadCategories = () => {
     getCategories().then(categories => {
       if (categories.error) {
-        console.log(categories.error);
         setError(categories.error);
       } else {
         setCategories(categories);
@@ -32,7 +31,6 @@ const Shop = () => {
   const loadFilteredResults = newFilters => {
     getFilteredProducts(skip, limit, newFilters).then(filteredProducts => {
       if (filteredProducts.error) {
-        console.log("SOME WENTT WRONG");
         setError(filteredProducts.error);
       } else {
         setFilteredResults(filteredProducts.data);

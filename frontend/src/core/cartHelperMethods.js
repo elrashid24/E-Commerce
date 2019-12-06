@@ -34,7 +34,7 @@ export const getCart = () => {
 }
 
 export const updateItem = (productId, count) => {
-    console.log('UPDATE_ID', productId)
+
     let cart = []
     if (typeof window !== 'undefined') {
         if (localStorage.getItem('cart')) {
@@ -55,11 +55,11 @@ export const removeItem = (productId) => {
     let cart = []
     if (typeof window !== 'undefined') {
         cart = JSON.parse(localStorage.getItem('cart'))
-        console.log('BIG CART', cart)
+
     }
     cart.map((product, i) => {
         if (product._id === productId) {
-            console.log('product being removed', product)
+
             cart.pop(i)
         }
         localStorage.setItem('cart', JSON.stringify(cart))

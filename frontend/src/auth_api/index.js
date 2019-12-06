@@ -10,7 +10,7 @@
           .then(response => {
               return response.json();
           })
-          .catch(err => console.log(err));
+          .catch(err => (err));
   };
 
   export const signIn = user => {
@@ -25,7 +25,7 @@
           .then(response => {
               return response.json();
           })
-          .catch(err => console.log(err));
+          .catch(err => (err));
   };
 
   export const authenticate = (data, next) => {
@@ -42,7 +42,7 @@
           //next = redirect user
           return fetch(`http://localhost:8000/signout`, {
               method: 'GET',
-          }).then(res => console.log('signout ', res)).catch(err => console.log('error ',
+          }).then(res => ('signout ', res)).catch(err => ('error ',
               err))
       }
   }

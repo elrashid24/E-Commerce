@@ -19,7 +19,7 @@ app.use(cors())
 mongoose.connect(process.env.DATABASE, {
     useNewUrlParser: true,
     useCreateIndex: true
-}).then(() => console.log("Connected to MonogoDB"), err => console.log(err))
+}).then(() => ("Connected to MonogoDB"), err => (err))
 
 
 app.use(morgan('dev'))
@@ -36,5 +36,5 @@ app.use(braintreeRoutes)
 const port = process.env.PORT || 8000
 
 app.listen(port, () => {
-    console.log(`Server is listenitng on ${port}`)
+    (`Server is listenitng on ${port}`)
 })

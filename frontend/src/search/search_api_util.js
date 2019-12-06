@@ -3,5 +3,5 @@ export const getCategories = () => {
         method: 'GET',
     }).then(categories => {
         return categories.json()
-    }).catch(error => console.log(error))
+    }).catch(error => (error))
 }

@@ -23,7 +23,6 @@ const SingleProduct = props => {
 
     listRelatedProducts(productId).then(relatedProducts => {
       if (relatedProducts.error) {
-        console.log("ERROR", relatedProducts.error);
         setError(relatedProducts.error);
       } else {
         setRelatedProducts(relatedProducts);

@@ -10,7 +10,7 @@ const AddCategory = () => {
   const [succes, setSuccess] = useState(false);
 
   const { user, token } = isAuthenticated();
-  // console.log(user);
+  // (user);
   const handleOnChange = e => {
     setError("");
     setName(e.target.value);
@@ -21,7 +21,7 @@ const AddCategory = () => {
     setError("");
     setSuccess(false);
     createCategory(user._id, token, { name }).then(newCategory => {
-      //   console.log(newCategory.error.message);
+      //   (newCategory.error.message);
       if (newCategory.error) {
         setError(newCategory.error);
       } else {

@@ -5,7 +5,7 @@ export const getProducts = (sortBy) => {
         method: 'GET'
     }).then(categories => {
         return categories.json()
-    }).catch(error => console.log(error))
+    }).catch(error => (error))
 }
 
 export const getCategories = () => {
@@ -13,7 +13,7 @@ export const getCategories = () => {
         method: 'GET',
     }).then(categories => {
         return categories.json()
-    }).catch(error => console.log(error))
+    }).catch(error => (error))
 }
 
 export const getFilteredProducts = (skip, limit, filters = {}) => {
@@ -33,7 +33,7 @@ export const getFilteredProducts = (skip, limit, filters = {}) => {
         .then(response => {
             return response.json();
         })
-        .catch(err => console.log(err));
+        .catch(err => (err));
 };
 
 export const list = params => {
@@ -42,7 +42,7 @@ export const list = params => {
         method: 'GET'
     }).then(result => {
         return result.json()
-    }).catch(error => console.log(error))
+    }).catch(error => (error))
 }
 
 export const getSingleProduct = productId => {
@@ -51,7 +51,7 @@ export const getSingleProduct = productId => {
 
     }).then(product => {
         return product.json()
-    }).catch(error => console.log(error))
+    }).catch(error => (error))
 }
 
 export const listRelatedProducts = productId => {
@@ -60,7 +60,7 @@ export const listRelatedProducts = productId => {
 
     }).then(products => {
         return products.json()
-    }).catch(error => console.log(error))
+    }).catch(error => (error))
 }
 
 export const getBraintreeClientToken = (userId, token) => {
@@ -74,5 +74,5 @@ export const getBraintreeClientToken = (userId, token) => {
 
     }).then(token => {
         return token.json()
-    }).catch(error => console.log(error))
+    }).catch(error => (error))
 }

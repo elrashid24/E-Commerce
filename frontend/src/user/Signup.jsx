@@ -29,7 +29,6 @@ const Signup = () => {
           error: false
         });
       }
-      console.log(values);
     });
   };
 
