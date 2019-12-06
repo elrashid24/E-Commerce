@@ -51,7 +51,7 @@ const Search = () => {
       return `We have ${results.length} items that match your search`;
     }
     if (searched && results.length < 1) {
-      return `We have no items that match your search `;
+      return <h1>We have no items that matched your search.</h1>;
     }
     return "";
   };
@@ -98,10 +98,10 @@ const Search = () => {
   }, []);
 
   return (
-    <div className="row">
+    <div className="col">
       <h2>{searchedMessage(searched, results)}</h2>
       <div className="container mb-3">{searchForm()}</div>
-      <div className="container-fluid mb-3">
+      <div className="row">
         {results.map((product, i) => {
           return <ProductItem key={i} product={product} />;
         })}

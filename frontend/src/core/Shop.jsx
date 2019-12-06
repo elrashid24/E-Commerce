@@ -5,6 +5,7 @@ import { getCategories, getFilteredProducts } from "./core_util";
 import CheckBox from "./CheckBox";
 import { prices } from "./fixedPrices";
 import PriceButtons from "./PriceButtons";
+import Search from "./Search";
 
 const Shop = () => {
   const [categories, setCategories] = useState([]);
@@ -124,6 +125,7 @@ const Shop = () => {
               );
             })}
             <br />
+
             {loadMoreButton()}
           </div>
         </div>
