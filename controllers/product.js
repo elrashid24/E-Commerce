@@ -226,6 +226,7 @@ exports.listBySearch = (req, res) => {
         findArgs[key] = filterObject[key];
       }
     }
+    console.log(findArgs)
   }
 
   Product.find(findArgs)

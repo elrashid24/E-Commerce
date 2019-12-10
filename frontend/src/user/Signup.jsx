@@ -91,7 +91,7 @@ const Signup = () => {
 
   return (
     <div>
-      <Layout title="Signup Page" description="this is the sign up page" />
+      <Layout title="Signup Page" description="Let's get started!" />
       {showError()},{showSuccess()}
       {signUpForm()}
     </div>

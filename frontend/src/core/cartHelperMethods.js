@@ -1,3 +1,7 @@
+import {
+    type
+} from "os"
+
 export const addProductToCart = (item, next) => {
     if (typeof window !== 'undefined') {
         let cart = []
@@ -65,4 +69,11 @@ export const removeItem = (productId) => {
         localStorage.setItem('cart', JSON.stringify(cart))
     })
     return cart
+}
+
+export const emptyCart = next => {
+    if (typeof window !== undefined) {
+        localStorage.removeItem("cart")
+        next()
+    }
 }

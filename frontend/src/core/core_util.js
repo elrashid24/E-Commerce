@@ -74,5 +74,20 @@ export const getBraintreeClientToken = (userId, token) => {
 
     }).then(token => {
         return token.json()
-    }).catch(error => (error))
+    }).catch(error => console.log(error))
+}
+
+export const processPayment = (userId, token, paymentDataFromClient) => {
+    return fetch(`http://localhost:8000/braintree/payment/${userId}`, {
+        method: `POST`,
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(paymentDataFromClient)
+
+    }).then(response => {
+        return response.json()
+    }).catch(error => console.log(error))
 }

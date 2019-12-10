@@ -96,7 +96,7 @@ const Signin = () => {
 
   return (
     <div>
-      <Layout title="Signin Page" description="this is the sign up page" />
+      <Layout title="Signin Page" description="Jump back in!" />
       {showLoading()}
       {showError()}, {redirectUser()}
       {signUpForm()}
