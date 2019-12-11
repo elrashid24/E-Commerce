@@ -91,3 +91,20 @@ export const processPayment = (userId, token, paymentDataFromClient) => {
         return response.json()
     }).catch(error => console.log(error))
 }
+
+export const createOrder = (userId, token, createOrderData) => {
+    return fetch(`http://localhost:8000/order/create/${userId}`, {
+        method: `POST`,
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            order: createOrderData
+        })
+
+    }).then(response => {
+        return response.json()
+    }).catch(error => console.log(error))
+}

@@ -4,7 +4,8 @@ import { isAuthenticated } from "../auth_api";
 import {
   getProducts,
   getBraintreeClientToken,
-  processPayment
+  processPayment,
+  createOrder
 } from "./core_util";
 import "braintree-web";
 import Dropin from "braintree-web-drop-in-react";
@@ -37,11 +38,24 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
     });
   };
 
+  const handleAdress = event => {
+    setData({ ...data, address: event.target.value });
+  };
+
   const showDropin = () => {
     return (
       <div onBlur={() => setData({ ...data, error: "" })}>
         {data.clientToken && products.length > 0 ? (
           <div>
+            <div className="gorm group mb-3">
+              <label className="text-muted">Delivery Address:</label>
+              <textarea
+                onChange={handleAdress}
+                value={data.address}
+                placeholder="Where would you like your order to be shipped?"
+                className="form-control"
+              ></textarea>
+            </div>
             <Dropin
               options={{ authorization: data.clientToken }}
               onInstance={instance => (data.instance = instance)}
@@ -83,6 +97,14 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
         };
         processPayment(userId, token, paymentData)
           .then(res => {
+            console.log(res);
+            const createOrderData = {
+              products: products,
+              transaction_id: res.transaction.id,
+              amount: res.transaction.amount,
+              address: data.address
+            };
+            createOrder(userId, token, createOrderData);
             setData({ ...data, success: res.success });
             emptyCart(() => {
               console.log("cart was emptied and shit");
