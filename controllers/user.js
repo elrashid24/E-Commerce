@@ -41,3 +41,36 @@ exports.update = (req, res) => {
             return res.json(user)
         })
 }
+
+exports.addOrderToUserHistory = (req, res, next) => {
+    let history = []
+    req.body.order.products.forEach((productItem) => {
+        history.push({
+            _id: productItem._id,
+            name: productItem.name,
+            category: productItem.category,
+            quantity: productItem.count,
+            transaction_id: req.body.order.transaction_id,
+            amount: req.body.order.amount
+        })
+    })
+
+    User.findOneAndUpdate({
+        _id: req.profile._id
+    }, {
+        $push: {
+            history: history
+        }
+    }, {
+        new: true
+    }, (error, updatedUser) => {
+        if (error) {
+
+            return res.status(400).json({
+                error: 'User purchase history could not be updated'
+            })
+        } else {
+            next()
+        }
+    })
+}
