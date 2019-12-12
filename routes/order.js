@@ -13,7 +13,7 @@ const {
     create
 } = require('../controllers/order')
 
-router.post('/order/create/:userId', requireSignIn, isAuth, addOrderToUserHistory, create) 
+router.post('/order/create/:userId', requireSignIn, isAuth, addOrderToUserHistory, create)
 
 router.param('userId', userById)
 
