@@ -1,7 +1,7 @@
 const {
     Order,
     CartItem
-} = require('../models/order')
+} = require('../models/Order')
 
 exports.create = (req, res) => {
     req.body.order.user = req.profile
