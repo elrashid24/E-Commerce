@@ -17,6 +17,12 @@ const experessValidator = require("express-validator");
 const cors = require("cors");
 app.use(cors());
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+  app.get("/", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "public", "index.html"));
+  });
+}
 mongoose
   .connect(process.env.MONGODB_URI || process.env.DATABASE, {
     useNewUrlParser: true,
@@ -39,12 +45,7 @@ app.use(productRoutes);
 app.use(braintreeRoutes);
 app.use(orderRoutes);
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("frontend/build"));
-  app.get("/", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-  });
-}
+
 
 app.listen(port, () => {
   console.log(`Server is listenitng on ${port}`);
